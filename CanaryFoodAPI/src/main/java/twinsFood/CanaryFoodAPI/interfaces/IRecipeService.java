@@ -4,12 +4,14 @@ import twinsFood.CanaryFoodAPI.dto.recipe.RecipeRequest;
 import twinsFood.CanaryFoodAPI.dto.recipe.RecipeResponse;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
+import twinsFood.CanaryFoodAPI.models.Ingredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IRecipeService {
 
-    public List<RecipeResponse> getRecipes();
+    public List<RecipeResponse> getRecipes(String type, ArrayList<Ingredient> withIngredients, ArrayList<Ingredient> withoutIngredients);
 
     public RecipeResponse findRecipe(int id) throws NoExiste;
 

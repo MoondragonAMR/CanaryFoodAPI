@@ -9,6 +9,7 @@ import twinsFood.CanaryFoodAPI.dto.recipe.ReviewInRecipeResponse;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
 import twinsFood.CanaryFoodAPI.interfaces.IRecipeService;
+import twinsFood.CanaryFoodAPI.models.Ingredient;
 import twinsFood.CanaryFoodAPI.models.Recipe;
 import twinsFood.CanaryFoodAPI.repositories.IngredientRepository;
 import twinsFood.CanaryFoodAPI.repositories.RecipeRepository;
@@ -31,28 +32,40 @@ public class RecipeService implements IRecipeService {
     private ReviewRepository rvr;
 
     @Override
-    public List<RecipeResponse> getRecipes() {
+    public List<RecipeResponse> getRecipes(String type, ArrayList<Ingredient> withIngredients, ArrayList<Ingredient> withoutIngredients) {
         List<Recipe> recipes = rr.findAll();
         List<RecipeResponse> recipesResponse = new ArrayList<>();
         recipes.forEach(recipe -> {
-            ArrayList<IngredientInRecipeResponse> ingredients = new ArrayList<>();
-            recipe.getIngredients().forEach(ingredient -> {
-                ArrayList<Integer> recipesIngredient = new ArrayList<>();
-                ingredient.getRecipes().forEach(recipeingredient -> {
-                    recipesIngredient.add(recipeingredient.getId());
+            if (recipe.getType().matches(type)) {
+                ArrayList<IngredientInRecipeResponse> ingredients = new ArrayList<>();
+                final boolean[] mostrar = {true};
+                final boolean[] contiene = {false};
+                recipe.getIngredients().forEach(ingredient -> {
+                    if (withoutIngredients.contains(ingredient)) {
+                        mostrar[0] = false;
+                    }
+                    if (withIngredients.contains(ingredient)) {
+                        contiene[0] = true;
+                    }
+                    ArrayList<Integer> recipesIngredient = new ArrayList<>();
+                    ingredient.getRecipes().forEach(recipeingredient -> {
+                        recipesIngredient.add(recipeingredient.getId());
+                    });
+                    ingredients.add(new IngredientInRecipeResponse(ingredient.getId(), ingredient.getName(),
+                            ingredient.getType(), recipesIngredient));
                 });
-                ingredients.add(new IngredientInRecipeResponse(ingredient.getId(), ingredient.getName(),
-                        ingredient.getType(), recipesIngredient));
-            });
-            ArrayList<ReviewInRecipeResponse> reviews = new ArrayList<>();
-            recipe.getReviews().forEach(review -> {
-                int recipeReview = review.getRecipe().getId();
-                reviews.add(new ReviewInRecipeResponse(review.getId(), review.getTitle(),
-                        review.getDescription(), review.getRating(), review.getAuthor(),
-                        recipeReview));
-            });
-            recipesResponse.add(new RecipeResponse(recipe.getId(), recipe.getTitle(), recipe.getType(), ingredients,
-                    recipe.getSteps(), recipe.getPicture(), reviews));
+                if (!mostrar[0] && contiene[0]) {
+                    ArrayList<ReviewInRecipeResponse> reviews = new ArrayList<>();
+                    recipe.getReviews().forEach(review -> {
+                        int recipeReview = review.getRecipe().getId();
+                        reviews.add(new ReviewInRecipeResponse(review.getId(), review.getTitle(),
+                                review.getDescription(), review.getRating(), review.getAuthor(),
+                                recipeReview));
+                    });
+                    recipesResponse.add(new RecipeResponse(recipe.getId(), recipe.getTitle(), recipe.getType(), ingredients,
+                            recipe.getSteps(), recipe.getPicture(), reviews));
+                }
+            }
         });
         return recipesResponse;
     }
@@ -84,8 +97,8 @@ public class RecipeService implements IRecipeService {
     @Override
     public RecipeResponse addRecipe(RecipeRequest recipe) throws Existe {
         final boolean[] correcto = {true};
-        getRecipes().forEach(encontrado -> {
-            if (encontrado.title().matches(recipe.title())){
+        rr.findAll().forEach(encontrado -> {
+            if (encontrado.getTitle().matches(recipe.title())){
                 correcto[0] = false;
             }
         });
@@ -121,9 +134,9 @@ public class RecipeService implements IRecipeService {
         });
         finalRecipe.setId(id);
         final boolean[] correcto = {true};
-        getRecipes().forEach(encontrado -> {
-            if ((encontrado.title().matches(recipe.title()))
-                    && !(encontrado.id() == id)) {
+        rr.findAll().forEach(encontrado -> {
+            if ((encontrado.getTitle().matches(recipe.title()))
+                    && !(encontrado.getId() == id)) {
                 correcto[0] = false;
             }
         });

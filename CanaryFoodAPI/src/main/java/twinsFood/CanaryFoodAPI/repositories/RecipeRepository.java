@@ -5,4 +5,5 @@ import twinsFood.CanaryFoodAPI.models.Recipe;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     public Recipe findByTitle(String title);
+    public boolean existsByTitle(String title);
 }
