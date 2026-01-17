@@ -1,3 +1,7 @@
 package twinsFood.CanaryFoodAPI.dto.recipe;
 
-public record IngredientInRecipeResponse(){}
+import java.util.ArrayList;
+
+public record IngredientInRecipeResponse(int id,
+                                         String name,
+                                         String type, ArrayList<Integer> recipes){}

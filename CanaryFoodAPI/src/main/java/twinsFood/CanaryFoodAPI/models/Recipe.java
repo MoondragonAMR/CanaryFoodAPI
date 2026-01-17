@@ -50,6 +50,12 @@ public class Recipe {
         this.picture = picture;
     }
 
+    public Recipe(String title, String type, String steps) {
+        this.title = title;
+        this.type = type;
+        this.steps = steps;
+    }
+
     public int getId() {
         return id;
     }
