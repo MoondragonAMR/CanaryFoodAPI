@@ -20,19 +20,14 @@ public class Ingredient {
     @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private String type;
 
-    @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private boolean vegetarian;
 
-    @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private boolean vegan;
 
-    @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private boolean sugar;
 
-    @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private boolean gluten;
 
-    @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private boolean dairy;
 
     private String picture;

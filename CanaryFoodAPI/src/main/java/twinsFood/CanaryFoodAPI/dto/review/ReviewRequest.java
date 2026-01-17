@@ -13,7 +13,6 @@ public record ReviewRequest(int id,
                             String title,
                             @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
                             String description,
-                            @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
                             @Min(value = 0, message = "No puede haber valoración negativa") @Max(value = 5, message = "La valoración deber ser máximo 5")
                             double rating,
                             String author,

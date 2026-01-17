@@ -19,7 +19,6 @@ public class Review {
     @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private String description;
 
-    @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     @Min(value = 0, message = "No puede haber valoración negativa") @Max(value = 5, message = "La valoración deber ser máximo 5")
     private double rating;
 
