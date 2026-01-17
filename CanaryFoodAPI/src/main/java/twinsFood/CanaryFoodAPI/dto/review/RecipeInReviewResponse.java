@@ -1,3 +1,10 @@
 package twinsFood.CanaryFoodAPI.dto.review;
 
-public record RecipeInReviewResponse(){}
+import java.util.ArrayList;
+
+public record RecipeInReviewResponse(int id,
+                                     String title,
+                                     String type,
+                                     String steps,
+                                     String picture,
+                                     ArrayList<Integer> reviews){}

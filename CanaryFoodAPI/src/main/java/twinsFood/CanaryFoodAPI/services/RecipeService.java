@@ -1,6 +1,7 @@
 package twinsFood.CanaryFoodAPI.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import twinsFood.CanaryFoodAPI.dto.recipe.IngredientInRecipeResponse;
 import twinsFood.CanaryFoodAPI.dto.recipe.RecipeRequest;
 import twinsFood.CanaryFoodAPI.dto.recipe.RecipeResponse;
@@ -9,17 +10,25 @@ import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
 import twinsFood.CanaryFoodAPI.interfaces.IRecipeService;
 import twinsFood.CanaryFoodAPI.models.Recipe;
+import twinsFood.CanaryFoodAPI.repositories.IngredientRepository;
 import twinsFood.CanaryFoodAPI.repositories.RecipeRepository;
+import twinsFood.CanaryFoodAPI.repositories.ReviewRepository;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@org.springframework.stereotype.Service
+@Service
 public class RecipeService implements IRecipeService {
 
     @Autowired
     private RecipeRepository rr;
+
+    @Autowired
+    private IngredientRepository ir;
+
+    @Autowired
+    private ReviewRepository rvr;
 
     @Override
     public List<RecipeResponse> getRecipes() {
@@ -76,15 +85,21 @@ public class RecipeService implements IRecipeService {
     public RecipeResponse addRecipe(RecipeRequest recipe) throws Existe {
         final boolean[] correcto = {true};
         getRecipes().forEach(encontrado -> {
-            if (encontrado.title().matches(recipe.title()) && (encontrado.steps().matches(recipe.steps()))){
+            if (encontrado.title().matches(recipe.title())){
                 correcto[0] = false;
             }
         });
         if (correcto[0]) {
             Recipe finalRecipe = new Recipe(recipe.title(), recipe.type(), recipe.steps());
+            recipe.ingredients().forEach(ingredient -> {
+                finalRecipe.getIngredients().add(ir.findById(ingredient).orElse(null));
+            });
+            recipe.reviews().forEach(review -> {
+                finalRecipe.getReviews().add(rvr.findById(review).orElse(null));
+            });
             rr.save(finalRecipe);
         }else{
-            throw new Existe("Ya existe una receta con esos datos");
+            throw new Existe("Ya existe una receta con ese título");
         }
         return findRecipe(recipe.id());
     }
@@ -98,18 +113,24 @@ public class RecipeService implements IRecipeService {
         finalRecipe.setType(recipe.type());
         finalRecipe.setSteps(recipe.steps());
         finalRecipe.setPicture(recipe.picture());
+        recipe.ingredients().forEach(ingredient -> {
+            finalRecipe.getIngredients().add(ir.findById(ingredient).orElse(null));
+        });
+        recipe.reviews().forEach(review -> {
+            finalRecipe.getReviews().add(rvr.findById(review).orElse(null));
+        });
         finalRecipe.setId(id);
         final boolean[] correcto = {true};
         getRecipes().forEach(encontrado -> {
-            if ((encontrado.title().matches(recipe.title()) && (encontrado.steps().matches(recipe.steps()))
-                    && !(encontrado.id() == id))) {
+            if ((encontrado.title().matches(recipe.title()))
+                    && !(encontrado.id() == id)) {
                 correcto[0] = false;
             }
         });
         if (correcto[0]) {
             rr.save(finalRecipe);
         }else{
-            throw new Existe("Ya existe una receta con esos datos");
+            throw new Existe("Ya existe una receta con ese título");
         }
         return findRecipe(recipe.id());
     }
