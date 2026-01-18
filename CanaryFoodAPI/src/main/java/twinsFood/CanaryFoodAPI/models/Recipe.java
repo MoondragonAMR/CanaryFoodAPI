@@ -20,7 +20,7 @@ public class Recipe {
     @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
     private String type;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name="recipe_ingredient")
     private List<Ingredient> ingredients = new ArrayList<>();
 

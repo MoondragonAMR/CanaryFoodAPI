@@ -45,6 +45,7 @@ public class Review {
         this.title = title;
         this.description = description;
         this.rating = rating;
+        this.author = "Anónimo";
         this.recipe = recipe;
     }
 
@@ -60,6 +61,7 @@ public class Review {
         this.title = title;
         this.description = description;
         this.rating = rating;
+        this.author = "Anónimo";
         this.recipe = recipe;
     }
 

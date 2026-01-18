@@ -5,8 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import twinsFood.CanaryFoodAPI.models.Ingredient;
 import twinsFood.CanaryFoodAPI.models.Recipe;
+import twinsFood.CanaryFoodAPI.models.Review;
 import twinsFood.CanaryFoodAPI.repositories.IngredientRepository;
 import twinsFood.CanaryFoodAPI.repositories.RecipeRepository;
+import twinsFood.CanaryFoodAPI.repositories.ReviewRepository;
 
 @Component
 public class RecipeSeeder implements CommandLineRunner {
@@ -15,6 +17,8 @@ public class RecipeSeeder implements CommandLineRunner {
     private RecipeRepository rr;
     @Autowired
     private IngredientRepository ir;
+    @Autowired
+    private ReviewRepository rvr;
 
     @Override
     public void run(String... args) throws Exception {
@@ -39,30 +43,47 @@ public class RecipeSeeder implements CommandLineRunner {
             ir.save(ingredient9);
         }
         if (!rr.existsByTitle("Tortitas de plátano")) {
-            rr.save(new Recipe("Tortitas de plátano", "Desayuno", "Algo", "Algo"));
-            ir.findByName("Plátanos").getRecipes().add(rr.findByTitle("Tortitas de plátano"));
-            ir.findByName("Huevos").getRecipes().add(rr.findByTitle("Tortitas de plátano"));
+            Recipe recipe1 = new Recipe("Tortitas de plátano", "Desayuno", "Algo", "Algo");
+            recipe1.getIngredients().add(ir.findByName("Plátanos"));
+            recipe1.getIngredients().add(ir.findByName("Huevos"));
+            rr.save(recipe1);
         }
         if (!rr.existsByTitle("Papas, piñas y costillas")) {
-            rr.save(new Recipe("Papas, piñas y costillas", "Almuerzo o Cena", "Algo", "Algo"));
-            ir.findByName("Papas").getRecipes().add(rr.findByTitle("Papas, piñas y costillas"));
-            ir.findByName("Piñas de millo").getRecipes().add(rr.findByTitle("Papas, piñas y costillas"));
-            ir.findByName("Costillas de cerdo").getRecipes().add(rr.findByTitle("Papas, piñas y costillas"));
+            Recipe recipe2 = new Recipe("Papas, piñas y costillas", "Almuerzo o Cena", "Algo", "Algo");
+            recipe2.getIngredients().add(ir.findByName("Papas"));
+            recipe2.getIngredients().add(ir.findByName("Piñas de millo"));
+            recipe2.getIngredients().add(ir.findByName("Costillas de cerdo"));
+            rr.save(recipe2);
         }
         if (!rr.existsByTitle("Quesadilla herreña")) {
-            rr.save(new Recipe("Quesadilla herreña", "Postre", "Algo", "Algo"));
-            ir.findByName("Queso").getRecipes().add(rr.findByTitle("Quesadilla herreña"));
-            ir.findByName("Azúcar").getRecipes().add(rr.findByTitle("Quesadilla herreña"));
+            Recipe recipe3 = new Recipe("Quesadilla herreña", "Postre", "Algo", "Algo");
+            recipe3.getIngredients().add(ir.findByName("Queso"));
+            recipe3.getIngredients().add(ir.findByName("Azúcar"));
+            rr.save(recipe3);
         }
         if (!rr.existsByTitle("Galletas gomeras")) {
-            rr.save(new Recipe("Galletas gomeras", "Merienda", "Algo", "Algo"));
-            ir.findByName("Huevos").getRecipes().add(rr.findByTitle("Galletas gomeras"));
-            ir.findByName("Almendras").getRecipes().add(rr.findByTitle("Galletas gomeras"));
+            Recipe recipe4 = new Recipe("Galletas gomeras", "Merienda", "Algo", "Algo");
+            recipe4.getIngredients().add(ir.findByName("Huevos"));
+            recipe4.getIngredients().add(ir.findByName("Almendras"));
+            rr.save(recipe4);
         }
         if (!rr.existsByTitle("Batido de gofio")) {
-            rr.save(new Recipe("Batido de gofio", "Bebida", "Algo", "Algo"));
-            ir.findByName("Gofio de trigo").getRecipes().add(rr.findByTitle("Batido de gofio"));
-            ir.findByName("Plátanos").getRecipes().add(rr.findByTitle("Batido de gofio"));
+            Recipe recipe5 = new Recipe("Batido de gofio", "Bebida", "Algo", "Algo");
+            recipe5.getIngredients().add(ir.findByName("Gofio de trigo"));
+            recipe5.getIngredients().add(ir.findByName("Plátanos"));
+            rr.save(recipe5);
+        }
+        if (rvr.findAll().isEmpty()) {
+            rvr.save(new Review("Prueba1", "Algo", 5, rr.findByTitle("Tortitas de plátano")));
+            rvr.save(new Review("Prueba2", "Algo", 1, rr.findByTitle("Tortitas de plátano")));
+            rvr.save(new Review("Prueba3", "Algo", 5, rr.findByTitle("Papas, piñas y costillas")));
+            rvr.save(new Review("Prueba4", "Algo", 1, rr.findByTitle("Papas, piñas y costillas")));
+            rvr.save(new Review("Prueba5", "Algo", 5, rr.findByTitle("Quesadilla herreña")));
+            rvr.save(new Review("Prueba6", "Algo", 1, rr.findByTitle("Quesadilla herreña")));
+            rvr.save(new Review("Prueba7", "Algo", 5, rr.findByTitle("Galletas gomeras")));
+            rvr.save(new Review("Prueba8", "Algo", 1, rr.findByTitle("Galletas gomeras")));
+            rvr.save(new Review("Prueba9", "Algo", 5, rr.findByTitle("Batido de gofio")));
+            rvr.save(new Review("Prueba10", "Algo", 1, rr.findByTitle("Batido de gofio")));
         }
     }
 }
