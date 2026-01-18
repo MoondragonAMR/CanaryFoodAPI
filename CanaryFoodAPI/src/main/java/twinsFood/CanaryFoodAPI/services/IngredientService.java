@@ -72,13 +72,15 @@ public class IngredientService implements IIngredientService {
         });
         if (correcto[0]) {
             Ingredient finalIngredient = new Ingredient(ingredient.name(), ingredient.type(), ingredient.vegetarian(), ingredient.vegan(), ingredient.sugar(), ingredient.gluten(), ingredient.dairy(), ingredient.picture());
-            ingredient.recipes().forEach(recipe -> {
-                finalIngredient.getRecipes().add(rr.findById(recipe).orElse(null));
-            });
+            finalIngredient.getRecipes().add(rr.findById(ingredient.recipe()).orElse(null));
             ir.save(finalIngredient);
+            Recipe recipe = rr.findById(ingredient.recipe()).orElse(null);
+            assert recipe != null;
+            recipe.getIngredients().add(ir.findByName(finalIngredient.getName()));
+            rr.save(recipe);
         }else{
             throw new Existe("Ya existe un ingrediente con ese nombre");
         }
-        return findIngredient(ingredient.id());
+        return findIngredient(ir.findByName(ingredient.name()).getId());
     }
 }

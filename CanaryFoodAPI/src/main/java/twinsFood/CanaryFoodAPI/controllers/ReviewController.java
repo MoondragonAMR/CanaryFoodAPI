@@ -40,8 +40,6 @@ public class ReviewController {
             return ResponseEntity.status(HttpStatus.CREATED).body(rvs.addReview(review));
         } catch (Existe e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        } catch (NoExiste e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }

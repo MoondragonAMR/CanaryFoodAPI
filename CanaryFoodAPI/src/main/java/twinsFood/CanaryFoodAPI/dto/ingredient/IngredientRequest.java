@@ -5,8 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 
-public record IngredientRequest(int id,
-                                @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
+public record IngredientRequest(@NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
                                 String name,
                                 @NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
                                 String type,
@@ -16,4 +15,4 @@ public record IngredientRequest(int id,
                                 boolean gluten,
                                 boolean dairy,
                                 String picture,
-                                ArrayList<Integer> recipes){}
+                                int recipe){}

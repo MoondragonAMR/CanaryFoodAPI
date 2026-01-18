@@ -6,10 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import twinsFood.CanaryFoodAPI.dto.recipe.Filters;
 import twinsFood.CanaryFoodAPI.dto.recipe.RecipeRequest;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
+import twinsFood.CanaryFoodAPI.models.Ingredient;
 import twinsFood.CanaryFoodAPI.services.RecipeService;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/v1/canaryfood/recipes")
@@ -18,8 +22,8 @@ public class RecipeController {
     private RecipeService rs;
 
     @GetMapping("/")
-    public ResponseEntity<?> listar() {
-        return ResponseEntity.ok(rs.getRecipes(null, null, null));
+    public ResponseEntity<?> listar(@RequestBody Filters filters) {
+        return ResponseEntity.ok(rs.getRecipes(filters));
     }
 
     @GetMapping("/{id}")
@@ -40,8 +44,6 @@ public class RecipeController {
             return ResponseEntity.status(HttpStatus.CREATED).body(rs.addRecipe(recipe));
         } catch (Existe e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        } catch (NoExiste e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
     @PutMapping("/{id}")

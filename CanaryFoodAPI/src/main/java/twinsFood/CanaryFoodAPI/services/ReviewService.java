@@ -66,6 +66,6 @@ public class ReviewService implements IReviewService {
         }else{
             throw new Existe("Ya existe un comentario con ese título");
         }
-        return findReview(review.id());
+        return findReview(rvr.findByTitle(review.title()).getId());
     }
 }

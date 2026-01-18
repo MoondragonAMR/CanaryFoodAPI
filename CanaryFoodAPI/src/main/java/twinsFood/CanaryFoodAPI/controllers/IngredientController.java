@@ -40,8 +40,6 @@ public class IngredientController {
             return ResponseEntity.status(HttpStatus.CREATED).body(is.addIngredient(ingredient));
         } catch (Existe e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        } catch (NoExiste e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }
