@@ -32,7 +32,7 @@ public class Ingredient {
 
     private String picture;
 
-    @ManyToMany(mappedBy = "ingredients")
+    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<Recipe> recipes = new ArrayList<>();
 
     public Ingredient() {
