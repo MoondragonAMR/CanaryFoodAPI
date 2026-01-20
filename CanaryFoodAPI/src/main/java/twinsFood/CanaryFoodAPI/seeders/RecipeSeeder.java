@@ -162,8 +162,8 @@ public class RecipeSeeder implements CommandLineRunner {
             rr.save(recipe5);
         }
         if (rvr.findAll().isEmpty()) {
-            rvr.save(new Review("Prueba1", "Algo", 5, rr.findByTitle("Tortitas de plátano")));
-            rvr.save(new Review("Prueba2", "Algo", 1, rr.findByTitle("Tortitas de plátano")));
+            rvr.save(new Review("Prueba1", "Algo", 5, rr.findByTitle("Tortitas de gofio")));
+            rvr.save(new Review("Prueba2", "Algo", 1, rr.findByTitle("Tortitas de gofio")));
             rvr.save(new Review("Prueba3", "Algo", 5, rr.findByTitle("Papas, piñas y costillas")));
             rvr.save(new Review("Prueba4", "Algo", 1, rr.findByTitle("Papas, piñas y costillas")));
             rvr.save(new Review("Prueba5", "Algo", 5, rr.findByTitle("Quesadilla herreña")));
