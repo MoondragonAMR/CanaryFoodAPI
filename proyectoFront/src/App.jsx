@@ -1,12 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import Recipes from './pages/recipes';
-import RecipeDetails from './pages/recipeDetails';
-import CreateRecipe from '.pages/createRecipe';
-import UpdateRecipe from 'pages/updateRecipe';
-import DeleteRecipe from 'pages/deleteRecipe';
-import AddIngredient from 'pages/addIngredient';
-import ReviewRecipe from 'pages/reviewRecipe';
+import Recipes from './pages/Recipes';
+import RecipeDetails from './pages/RecipeDetails';
+import CreateRecipe from '.pages/CreateRecipe';
+import UpdateRecipe from 'pages/UpdateRecipe';
+import DeleteRecipe from 'pages/DeleteRecipe';
+import AddIngredient from 'pages/AddIngredient';
+import ReviewRecipe from 'pages/ReviewRecipe';
 import './App.css'
 
 function App() {
