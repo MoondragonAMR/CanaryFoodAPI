@@ -95,18 +95,7 @@ public class RecipeSeeder implements CommandLineRunner {
             ir.save(ingredient35);
         }
         if (!rr.existsByTitle("Tortitas de gofio")) {
-            Recipe recipe1 = new Recipe("Tortitas de gofio", "Desayuno", "1.Echar en una batidora un huevo, una clara de huevo, el gofio (⅓ taza), la stevia (2 sobres), la canela (½ cucharadita), la levadura en polvo (1 cucharadita), la esencia de vainilla (1 cucharadita) y las semillas de chía (1 cucharada).\n" +
-                    "2.Batir hasta tener mezcla homogénea y sin grumos.\n" +
-                    "3.Si la textura es muy espesa, añadir una cucharada de leche y volver a batir, y así ir añadiendo leche tener la textura deseada. La mezcla debe tener consistencia líquida pero no demasiado, de esta forma las tortitas quedarán más esponjosas.\n" +
-                    "4.Dejar reposar la mezcla de las tortitas de gofio unos minutos para que adquiera textura y se integren mejor los sabores.\n" +
-                    "5.Engrasar con aceite de oliva una sartén pequeña antiadherente.\n" +
-                    "6.Calentar la sartén.\n" +
-                    "7.Añadir una pequeña parte de la mezcla a la sartén dándole forma redondeada.\n" +
-                    "8.Cocinar unos minutos a fuego bajo-medio para que se cocinen bien pero no se quemen.\n" +
-                    "9.Cuando empiecen a salirle a las tortitas de gofio ‘agujeritos’ por la parte superior, darle la vuelta y cocinar un minuto más por ese otro lado.\n" +
-                    "10.Sacar las tortitas de gofio de la sartén.\n" +
-                    "11.Repetir el proceso hasta acabar con la totalidad de la mezcla. Con las cantidades indicadas en la receta me salieron 4 tortitas medianas y bastante ‘gorditas’ y esponjosas.\n" +
-                    "12.Una vez todas nuestras tortitas de gofio están cocinadas, servir en un plato y añadir por encima los toppings deseados. En este caso yo he utilizado frambuesas congeladas y sirope de agave.\n", "1_Tortitas_de_gofio.jpg");
+            Recipe recipe1 = new Recipe("Tortitas de gofio", "Desayuno", "1_Tortitas_de_gofio", "1_Tortitas_de_gofio.jpg");
             recipe1.getIngredients().add(ir.findByName("Gofio de millo"));
             recipe1.getIngredients().add(ir.findByName("Huevos"));
             recipe1.getIngredients().add(ir.findByName("Claras de huevo"));
@@ -122,11 +111,7 @@ public class RecipeSeeder implements CommandLineRunner {
             rr.save(recipe1);
         }
         if (!rr.existsByTitle("Papas, piñas y costillas")) {
-            Recipe recipe2 = new Recipe("Papas, piñas y costillas", "Almuerzo o Cena", "1.Desala las costillas (aprox. 250 g por persona) desde la noche anterior. Déjalas en remojo en abundante agua fría durante unas 12 horas, cambiando el agua 2 o 3 veces para eliminar el exceso de sal. Al día siguiente, comienza Cociendo las dos piñas de millo. En un caldero amplio, añade las piñas partidas por la mitad y cúbrelas con agua hasta la mitad del caldero. Agrega unas hebras de azafrán y pon al fuego. Deja hervir durante 30 minutos.\n" +
-                    "2.Añade las costillas desaladas al caldero. Cocina durante otros 30 minutos a fuego medio.\n" +
-                    "3.Incorpora las papas (unas 2-3 medianas por persona), peladas y enteras (o partidas si son grandes). Baja el fuego para que no se rompan durante la cocción y deja guisar durante 30–40 minutos, hasta que estén tiernas.\n" +
-                    "4.Apaga el fuego y deja reposar el guiso al menos 30 minutos antes de servir. Esto permite que los sabores se integren y el caldo se asiente.\n" +
-                    "5.Prepara el mojo de cilantro. Lava bien el cilantro y sécalo. Pela los dos dientes de ajo. En un vaso batidor o mortero, añade el cilantro, el ajo, el comino (½ cucharadita), la sal y el vinagre (2 cucharadas). Tritura todo hasta formar una pasta espesa. Añade poco a poco el aceite de oliva (100 ml) mientras sigues batiendo, hasta que el mojo tenga una textura homogénea y brillante. Prueba y ajusta de sal, vinagre o picante al gusto.", "2_Papas_piñas_y_costillas.jpg");
+            Recipe recipe2 = new Recipe("Papas, piñas y costillas", "Almuerzo o Cena", "2_Papas_piñas_y_costillas", "2_Papas_piñas_y_costillas.jpg");
             recipe2.getIngredients().add(ir.findByName("Papas nuevas"));
             recipe2.getIngredients().add(ir.findByName("Piñas de millo"));
             recipe2.getIngredients().add(ir.findByName("Costillas saladas de cerdo"));
@@ -142,19 +127,7 @@ public class RecipeSeeder implements CommandLineRunner {
             rr.save(recipe2);
         }
         if (!rr.existsByTitle("Quesadilla herreña")) {
-            Recipe recipe3 = new Recipe("Quesadilla herreña", "Postre", "1.Chafar el queso fresco (350 gr) con un tenedor sin mezclarlo o batirlo para que no se haga una pasta compacta.\n" +
-                    "2.Mezclar el huevo con el azúcar (35 gr), la miel (50 gr) y la media piel de limón picada.\n" +
-                    "3.Añadir el queso fresco machacado y mezclar.\n" +
-                    "4.Agregar el anís en grano (½ cucharadita) y la canela en polvo (1 pizca) y mezclar de nuevo.\n" +
-                    "5.Añadir la harina (70 gr) y mezclar hasta que se incorpore por completo.\n" +
-                    "6.Tapar con papel film y dejar reposar a temperatura ambiente durante 1 hora.\n" +
-                    "7.Pasar un trocito de mantequilla por la base y los laterales de los huecos de un molde de muffins.\n" +
-                    "8.Verter un poquito de harina dentro cada hueco y por los laterales para que se adhiera a la mantequilla y darle la vuelta al molde de muffins para quitar el exceso de harina.\n" +
-                    "9.Rellenar cada hueco con la masa hasta llegar a la mitad.\n" +
-                    "10.Hornear a 170ºC durante unos 45 minutos.\n" +
-                    "11.Sacar del horno y dejar enfriar a temperatura ambiente.\n" +
-                    "12.Desmoldar las quesadillas herreñas y conservarlas en la nevera.\n" +
-                    "13.Sacar las quesadillas herreñas de la nevera 30 minutos antes de consumirlas para que se atemperen.\n", "3_Quesadilla_herreña.jpg");
+            Recipe recipe3 = new Recipe("Quesadilla herreña", "Postre", "3_Quesadilla_herreña", "3_Quesadilla_herreña.jpg");
             recipe3.getIngredients().add(ir.findByName("Queso fresco"));
             recipe3.getIngredients().add(ir.findByName("Harina"));
             recipe3.getIngredients().add(ir.findByName("Miel"));
@@ -167,10 +140,7 @@ public class RecipeSeeder implements CommandLineRunner {
             rr.save(recipe3);
         }
         if (!rr.existsByTitle("Galletas gomeras")) {
-            Recipe recipe4 = new Recipe("Galletas gomeras", "Merienda", "1.Cascar los 3 huevos y batirlos con la mantequilla (500 gr) a punto de pomada, añadir el azúcar (1 kg) (dejar un poco para pasar las galletas después de cortadas). Añadir la canela y el limón, la leche (1 vaso), el agua (1 vaso), el aceite (1 l), y mezclar bien.\n" +
-                    "2.Por último incorporar la harina (3500 gr) tamizada con levadura (2 sobres), amasar y reposar en nevera por lo menos 20 minutos.\n" +
-                    "3.Separamos un poco de masa y extendemos con el rodillo de 1 cm de grosor o un poco menos (no poner harina en la superficie donde extendemos la masa es preferible un papel vegetal). Cortar las galletas con un cortapastas y pasar una de las caras por azúcar ir colocándolas en la vilana.\n" +
-                    "4.Hornear con el horno precalentado a 180º hasta que hayan estofado un poco y estén doraditas *Pueden durar bastante tiempo guardadas en botes herméticos o latas para galletas*.\n", "4_Galletas_gomeras.jpg");
+            Recipe recipe4 = new Recipe("Galletas gomeras", "Merienda", "4_Galletas_gomeras", "4_Galletas_gomeras.jpg");
             recipe4.getIngredients().add(ir.findByName("Huevos"));
             recipe4.getIngredients().add(ir.findByName("Azúcar"));
             recipe4.getIngredients().add(ir.findByName("Harina"));
@@ -184,8 +154,7 @@ public class RecipeSeeder implements CommandLineRunner {
             rr.save(recipe4);
         }
         if (!rr.existsByTitle("Batido de gofio")) {
-            Recipe recipe5 = new Recipe("Batido de gofio", "Bebida", "1.Mezclamos todo (20 gr de gofio, 124 gr de plátano, 200 ml de leche y 23 gr de crema de cacahuete) en una jarra y batimos hasta que todo esté bien integrado.\n" +
-                    "2.Lo servimos y a disfrutar!! Si lo queremos en versión papilla (más espeso),tendríamos que echar menos leche.\n", "5_Batido_de_gofio.jpg");
+            Recipe recipe5 = new Recipe("Batido de gofio", "Bebida", "5_Batido_de_gofio", "5_Batido_de_gofio.jpg");
             recipe5.getIngredients().add(ir.findByName("Gofio de millo"));
             recipe5.getIngredients().add(ir.findByName("Plátanos de Canarias"));
             recipe5.getIngredients().add(ir.findByName("Leche desnatada"));
