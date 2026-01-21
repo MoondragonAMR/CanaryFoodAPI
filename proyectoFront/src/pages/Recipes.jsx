@@ -58,6 +58,9 @@ export default function Recipes() {
                                 <td>{recipe.title}</td>
                                 <td>{recipe.type}</td>
                                 <td className="actions">
+                                    <Link to={`/recipes/${recipe.id}`}>
+                                        <button>Detalles</button>
+                                    </Link>
                                     <Link to={`/recipes/update/${recipe.id}`}>
                                         <button>✏️</button>
                                     </Link>
