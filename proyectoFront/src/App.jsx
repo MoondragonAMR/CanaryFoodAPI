@@ -5,7 +5,6 @@ import Recipes from './pages/Recipes';
 import RecipeDetails from './pages/RecipeDetails';
 import CreateRecipe from '.pages/CreateRecipe';
 import UpdateRecipe from 'pages/UpdateRecipe';
-import DeleteRecipe from 'pages/DeleteRecipe';
 import AddIngredient from 'pages/AddIngredient';
 import ReviewRecipe from 'pages/ReviewRecipe';
 import './App.css'
@@ -19,9 +18,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
-          <Route path="/recipes/create/:id" element={<CreateRecipe />} />
+          <Route path="/recipes/create" element={<CreateRecipe />} />
           <Route path="/recipes/update/:id" element={<UpdateRecipe />} />
-          <Route path="/recipes/delete/:id" element={<DeleteRecipe />} />
           <Route path="/ingredients/add" element={<AddIngredient />} />
           <Route path="/recipes/review/:id" element={<ReviewRecipe />} />
           <Route path="*" element={<NotFound />} />
