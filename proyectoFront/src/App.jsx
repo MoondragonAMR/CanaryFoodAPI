@@ -20,7 +20,7 @@ function App() {
           <Route path="/recipes/:id" element={<RecipeDetails />} />
           <Route path="/recipes/create" element={<CreateRecipe />} />
           <Route path="/recipes/update/:id" element={<UpdateRecipe />} />
-          <Route path="/ingredients/add" element={<AddIngredient />} />
+          <Route path="/ingredients/add/:id" element={<AddIngredient />} />
           <Route path="/recipes/review/:id" element={<ReviewRecipe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
