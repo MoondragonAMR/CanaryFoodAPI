@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RecipeForm from '../components/RecipeForm';
-import { createRecipe } from '../services/alumnosService';
+import { updateRecipe } from '../services/alumnosService';
 
-export default function CrearReceta() {
+export default function ModificarReceta() {
   const [form, setForm] = useState({ title: '', type: '' , author: '', picture: '', ingredients: [],
     steps:[]
   });
@@ -14,13 +14,13 @@ export default function CrearReceta() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await createRecipe(form);
+    await updateRecipe(form);
     navigate('/recipes');
   };
 
   return (
     <>
-      <h2>Nueva receta</h2>
+      <h2>Modificar receta</h2>
       <RecipeForm
         form={form}
         onChange={handleChange}
