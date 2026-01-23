@@ -22,6 +22,9 @@ public class ReviewController {
         return ResponseEntity.ok(rvs.getReviews());
     }
 
+    @GetMapping("/filter")
+    public ResponseEntity<?> filtrar(@RequestParam int recipe) { return ResponseEntity.ok(rvs.filterReviews(recipe));}
+
     @GetMapping("/{id}")
     public ResponseEntity<?> mostrar(@PathVariable int id) {
         try{

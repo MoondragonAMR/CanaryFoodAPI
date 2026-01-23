@@ -40,6 +40,24 @@ public class ReviewService implements IReviewService {
     }
 
     @Override
+    public List<ReviewResponse> filterReviews(int id) {
+        List<Review> reviews = rvr.findAll();
+        List<ReviewResponse> reviewsResponse = new ArrayList<>();
+        reviews.forEach(review -> {
+            if(review.getRecipe().getId() == id) {
+                ArrayList<Integer> reviewsRecipe = new ArrayList<>();
+                review.getRecipe().getReviews().forEach(reviewrecipe -> {
+                    reviewsRecipe.add(reviewrecipe.getId());
+                });
+                RecipeInReviewResponse recipe = new RecipeInReviewResponse(review.getRecipe().getId(), review.getRecipe().getTitle(),
+                        review.getRecipe().getType(), review.getRecipe().getSteps(), review.getRecipe().getPicture(), reviewsRecipe);
+                reviewsResponse.add(new ReviewResponse(review.getId(), review.getTitle(), review.getDescription(), review.getRating(), review.getAuthor(), recipe));
+            }
+        });
+        return reviewsResponse;
+    }
+
+    @Override
     public ReviewResponse findReview(int id) throws NoExiste {
         Review review = rvr.findById(id).orElse(null);
         if (review == null) throw new NoExiste("No existe ningún comentario con ese id");

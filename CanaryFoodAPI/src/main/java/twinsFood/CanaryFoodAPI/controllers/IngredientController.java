@@ -22,6 +22,11 @@ public class IngredientController {
         return ResponseEntity.ok(is.getIngredients());
     }
 
+    @GetMapping("/filter")
+    public ResponseEntity<?> filtrar(@RequestParam int recipe) {
+        return ResponseEntity.ok(is.filterIngredients(recipe));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> mostrar(@PathVariable int id) {
         try{

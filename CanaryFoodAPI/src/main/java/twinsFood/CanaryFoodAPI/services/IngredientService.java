@@ -46,6 +46,32 @@ public class IngredientService implements IIngredientService {
     }
 
     @Override
+    public List<IngredientResponse> filterIngredients(int id) {
+        List<Ingredient> ingredients = ir.findAll();
+        List<IngredientResponse> ingredientsResponse = new ArrayList<>();
+        ingredients.forEach(ingredient -> {
+            ArrayList<RecipeInIngredientResponse> recipes = new ArrayList<>();
+            final boolean[] mostrar = {false};
+            ingredient.getRecipes().forEach(recipe -> {
+                if (recipe.getId() == id) {
+                    mostrar[0] = true;
+                }
+                ArrayList<Integer> ingredientsRecipe = new ArrayList<>();
+                recipe.getIngredients().forEach(ingredientrecipe -> {
+                    ingredientsRecipe.add(ingredientrecipe.getId());
+                });
+                recipes.add(new RecipeInIngredientResponse(recipe.getId(), recipe.getTitle(),
+                        recipe.getType(), ingredientsRecipe, recipe.getSteps(), recipe.getPicture()));
+            });
+            if (mostrar[0]) {
+                ingredientsResponse.add(new IngredientResponse(ingredient.getId(), ingredient.getName(), ingredient.getType(), ingredient.isVegetarian(),
+                        ingredient.isVegan(), ingredient.isSugar(), ingredient.isGluten(), ingredient.isDairy(), ingredient.getPicture(), recipes));
+            }
+        });
+        return ingredientsResponse;
+    }
+
+    @Override
     public IngredientResponse findIngredient(int id) throws NoExiste {
         Ingredient ingredient = ir.findById(id).orElse(null);
         if (ingredient == null) throw new NoExiste("No existe ningún ingrediente con ese id");
