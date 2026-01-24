@@ -1,4 +1,4 @@
-package twinsFood.CanaryFoodAPI.dto.ingredient;
+package twinsFood.CanaryFoodAPI.dtos.ingredient;
 
 import java.util.ArrayList;
 

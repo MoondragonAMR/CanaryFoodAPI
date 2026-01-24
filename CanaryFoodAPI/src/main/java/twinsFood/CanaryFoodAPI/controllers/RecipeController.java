@@ -6,14 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import twinsFood.CanaryFoodAPI.dto.recipe.Filters;
-import twinsFood.CanaryFoodAPI.dto.recipe.RecipeRequest;
+import twinsFood.CanaryFoodAPI.dtos.recipe.Filters;
+import twinsFood.CanaryFoodAPI.dtos.recipe.RecipeRequest;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
-import twinsFood.CanaryFoodAPI.models.Ingredient;
 import twinsFood.CanaryFoodAPI.services.RecipeService;
-
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/v1/canaryfood/recipes")

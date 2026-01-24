@@ -2,9 +2,9 @@ package twinsFood.CanaryFoodAPI.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import twinsFood.CanaryFoodAPI.dto.ingredient.IngredientRequest;
-import twinsFood.CanaryFoodAPI.dto.ingredient.IngredientResponse;
-import twinsFood.CanaryFoodAPI.dto.ingredient.RecipeInIngredientResponse;
+import twinsFood.CanaryFoodAPI.dtos.ingredient.IngredientRequest;
+import twinsFood.CanaryFoodAPI.dtos.ingredient.IngredientResponse;
+import twinsFood.CanaryFoodAPI.dtos.ingredient.RecipeInIngredientResponse;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
 import twinsFood.CanaryFoodAPI.interfaces.IIngredientService;

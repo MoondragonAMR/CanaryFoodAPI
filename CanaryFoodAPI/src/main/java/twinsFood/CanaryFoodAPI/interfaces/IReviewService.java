@@ -1,7 +1,7 @@
 package twinsFood.CanaryFoodAPI.interfaces;
 
-import twinsFood.CanaryFoodAPI.dto.review.ReviewRequest;
-import twinsFood.CanaryFoodAPI.dto.review.ReviewResponse;
+import twinsFood.CanaryFoodAPI.dtos.review.ReviewRequest;
+import twinsFood.CanaryFoodAPI.dtos.review.ReviewResponse;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
 

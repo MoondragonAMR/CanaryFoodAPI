@@ -1,4 +1,4 @@
-package twinsFood.CanaryFoodAPI.dto.recipe;
+package twinsFood.CanaryFoodAPI.dtos.recipe;
 
 import twinsFood.CanaryFoodAPI.models.Ingredient;
 

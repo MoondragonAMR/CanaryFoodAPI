@@ -2,17 +2,15 @@ package twinsFood.CanaryFoodAPI.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import twinsFood.CanaryFoodAPI.dto.recipe.*;
+import twinsFood.CanaryFoodAPI.dtos.recipe.*;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
 import twinsFood.CanaryFoodAPI.interfaces.IRecipeService;
-import twinsFood.CanaryFoodAPI.models.Ingredient;
 import twinsFood.CanaryFoodAPI.models.Recipe;
 import twinsFood.CanaryFoodAPI.repositories.IngredientRepository;
 import twinsFood.CanaryFoodAPI.repositories.RecipeRepository;
 import twinsFood.CanaryFoodAPI.repositories.ReviewRepository;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

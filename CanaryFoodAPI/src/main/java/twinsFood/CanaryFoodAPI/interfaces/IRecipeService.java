@@ -1,13 +1,11 @@
 package twinsFood.CanaryFoodAPI.interfaces;
 
-import twinsFood.CanaryFoodAPI.dto.recipe.Filters;
-import twinsFood.CanaryFoodAPI.dto.recipe.RecipeRequest;
-import twinsFood.CanaryFoodAPI.dto.recipe.RecipeResponse;
+import twinsFood.CanaryFoodAPI.dtos.recipe.Filters;
+import twinsFood.CanaryFoodAPI.dtos.recipe.RecipeRequest;
+import twinsFood.CanaryFoodAPI.dtos.recipe.RecipeResponse;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
-import twinsFood.CanaryFoodAPI.models.Ingredient;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IRecipeService {

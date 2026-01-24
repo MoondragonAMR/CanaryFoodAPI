@@ -1,4 +1,4 @@
-package twinsFood.CanaryFoodAPI.dto.review;
+package twinsFood.CanaryFoodAPI.dtos.review;
 
 public record ReviewResponse(int id,
                              String title,

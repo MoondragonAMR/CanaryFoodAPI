@@ -1,9 +1,7 @@
-package twinsFood.CanaryFoodAPI.dto.ingredient;
+package twinsFood.CanaryFoodAPI.dtos.ingredient;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
-import java.util.ArrayList;
 
 public record IngredientRequest(@NotNull(message = "Este campo es obligatorio") @NotBlank(message = "Este campo no puede estar vacío")
                                 String name,
