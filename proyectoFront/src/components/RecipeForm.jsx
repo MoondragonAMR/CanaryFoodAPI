@@ -30,13 +30,18 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
         required
       />
 
-      <input
-        type="text"
+      <select
         name="type"
-        placeholder="Introducir tipo de la receta"
         onChange={onChange}
         required
-      />
+      >
+        <option value="">-- Selecciona tipo de la receta --</option>
+        <option value="Desayuno"></option>
+        <option value="Bebida"></option>
+        <option value="Almuerzo/Cena"></option>
+        <option value="Postre"></option>
+        <option value="Merienda"></option>
+      </select>
 
       <input
         type="file"
@@ -63,7 +68,7 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
           ))}
           <option value="">
             <Link to={`/ingredients/add/${recipe.id}`}>
-                <button>Añadir ingrediente</button>
+              <button>Añadir ingrediente</button>
             </Link>
           </option>
         </select>
@@ -71,7 +76,7 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
 
       <button type="submit">Guardar</button>
       <Link to={'/recipes'}>
-                    <button>Cancelar</button>
+        <button>Cancelar</button>
       </Link>
     </form>
   );
