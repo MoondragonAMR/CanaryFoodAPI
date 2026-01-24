@@ -20,7 +20,7 @@ export default function ModificarReceta() {
 
   return (
     <>
-      <h2>Modificar receta</h2>
+      <h1>Modificar receta</h1>
       <RecipeForm
         form={form}
         onChange={handleChange}

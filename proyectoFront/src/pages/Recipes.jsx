@@ -31,7 +31,7 @@ export default function Recipes() {
 
     return (
         <>
-            <h2>Listado de recetas</h2>
+            <h1>Listado de recetas</h1>
 
             {loading && <div className="spinner">Cargando recetas...</div>}
 
