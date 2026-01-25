@@ -38,7 +38,7 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
         <option value="">-- Selecciona tipo de la receta --</option>
         <option value="Desayuno"></option>
         <option value="Bebida"></option>
-        <option value="Almuerzo/Cena"></option>
+        <option value="Almuerzo o cena"></option>
         <option value="Postre"></option>
         <option value="Merienda"></option>
       </select>
