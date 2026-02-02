@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getIngredients } from '../services/ingredientsService';
+import { getIngredients } from '../services/ingredientService';
 
 export default function RecipeForm({ form, onChange, onSubmit }) {
   const [ingredients, setIngredients] = useState([]);

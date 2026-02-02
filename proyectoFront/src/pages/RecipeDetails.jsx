@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { findRecipe } from '../services/recipeService';
 
 export default function Home() {
     return (<>

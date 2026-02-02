@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getRecipes, deleteRecipe } from '../services/recipesService';
+import { getRecipes, deleteRecipe } from '../services/recipeService';
 import ConfirmModal from '../components/ConfirmModal';
 
 export default function Recipes() {
