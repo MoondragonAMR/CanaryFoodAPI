@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IngredientForm from '../components/RecipeForm';
-import { createRecipe } from '../services/alumnosService';
+import IngredientForm from '../components/IngredientForm';
+import { addIngredient } from '../services/ingredientService';
 
 export default function AnadirIngrediente() {
   const [form, setForm] = useState({ name: '', type: '' , vegetarian: '', vegan: '',

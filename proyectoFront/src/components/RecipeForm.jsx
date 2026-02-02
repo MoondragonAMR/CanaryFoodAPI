@@ -25,6 +25,7 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
       <input
         type="text"
         name="title"
+        value={form.title}
         placeholder="Introducir título de la receta"
         onChange={onChange}
         required
@@ -33,21 +34,32 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
       <select
         name="type"
         onChange={onChange}
+        value={form.type}
         required
       >
         <option value="">-- Selecciona tipo de la receta --</option>
-        <option value="Desayuno"></option>
-        <option value="Bebida"></option>
-        <option value="Almuerzo o cena"></option>
-        <option value="Postre"></option>
-        <option value="Merienda"></option>
+        <option value="Desayuno">Desayuno</option>
+        <option value="Bebida">Bebida</option>
+        <option value="AlmuerzoCena">Almuerzo o cena</option>
+        <option value="Postre">Postre</option>
+        <option value="Merienda">Merienda</option>
       </select>
+
+      <input
+        type="text"
+        name="steps"
+        value={form.steps}
+        placeholder="Escribe los pasos de la receta"
+        onChange={onChange}
+        required
+      />
 
       <input
         type="file"
         name="picture"
         accept='image/*'
         onChange={onChange}
+        value={form.picture}
         required
       />
 
@@ -58,6 +70,7 @@ export default function RecipeForm({ form, onChange, onSubmit }) {
           name="ingredients"
           multiple
           onChange={onChange}
+          value={form.ingredients}
           required
         >
           <option value="">-- Selecciona al menos 2 ingredientes --</option>
