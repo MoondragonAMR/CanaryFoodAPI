@@ -7,9 +7,7 @@ import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
 import twinsFood.CanaryFoodAPI.interfaces.IRecipeService;
 import twinsFood.CanaryFoodAPI.models.Recipe;
-import twinsFood.CanaryFoodAPI.repositories.IngredientRepository;
 import twinsFood.CanaryFoodAPI.repositories.RecipeRepository;
-import twinsFood.CanaryFoodAPI.repositories.ReviewRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +17,6 @@ public class RecipeService implements IRecipeService {
 
     @Autowired
     private RecipeRepository rr;
-
-    @Autowired
-    private IngredientRepository ir;
-
-    @Autowired
-    private ReviewRepository rvr;
 
     @Override
     public List<RecipeResponse> getRecipes(Filters filters) {
