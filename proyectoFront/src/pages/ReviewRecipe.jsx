@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RecipeForm from '../components/RecipeForm';
-import { createRecipe } from '../services/alumnosService';
 
 export default function ValorarReceta() {
   const [form, setForm] = useState({ title: '', description: '' , rating: ''

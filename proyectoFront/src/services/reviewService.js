@@ -1,7 +1,7 @@
-const API_URL = 'http://localhost:8080/api/v1/canaryfood/reviews/';
+const API_URL = 'http://localhost:8080/api/v1/canaryfood/reviews';
 
 export const reviewRecipe = async (review) =>
-  fetch(API_URL, {
+  fetch(`${API_URL}/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(review)

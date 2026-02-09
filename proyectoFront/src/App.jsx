@@ -3,10 +3,10 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Recipes from './pages/Recipes';
 import RecipeDetails from './pages/RecipeDetails';
-import CreateRecipe from '.pages/CreateRecipe';
-import UpdateRecipe from 'pages/UpdateRecipe';
-import AddIngredient from 'pages/AddIngredient';
-import ReviewRecipe from 'pages/ReviewRecipe';
+import CreateRecipe from './pages/CreateRecipe';
+import UpdateRecipe from './pages/UpdateRecipe';
+import AddIngredient from './pages/AddIngredient';
+import ReviewRecipe from './pages/ReviewRecipe';
 import './App.css'
 
 function App() {

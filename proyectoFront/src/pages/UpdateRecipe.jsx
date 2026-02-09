@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RecipeForm from '../components/RecipeForm';
-import { updateRecipe } from '../services/alumnosService';
+import { updateRecipe } from '../services/recipeService';
 
 export default function ModificarReceta() {
   const [form, setForm] = useState({ title: '', type: '' , author: '', picture: '', ingredients: [],
