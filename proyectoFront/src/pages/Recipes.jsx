@@ -10,7 +10,8 @@ export default function Recipes() {
 
     const loadRecipes = async () => {
         setLoading(true);
-        const data = await getRecipes();
+        const filtros = {type: null, withIngredients: null, withoutIngredients: null}
+        const data = await getRecipes(filtros);
         setRecipes(data);
         setLoading(false);
     };
