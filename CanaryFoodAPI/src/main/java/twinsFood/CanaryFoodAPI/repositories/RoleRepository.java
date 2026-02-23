@@ -5,4 +5,6 @@ import twinsFood.CanaryFoodAPI.models.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer> {
     Role findByName(String role);
+
+    boolean existsByName(String role);
 }
