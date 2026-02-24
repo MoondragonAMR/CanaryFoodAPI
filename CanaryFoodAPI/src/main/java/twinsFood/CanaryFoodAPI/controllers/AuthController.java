@@ -70,7 +70,7 @@ public class AuthController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_USER') and !hasRole('ROLE_PREMIUM')")
+    @PreAuthorize("hasRole('USER') and !hasRole('PREMIUM')")
     @PostMapping("/premium")
     public ResponseEntity<?> premium(@ModelAttribute("user") User user){
         try {

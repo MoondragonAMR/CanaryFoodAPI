@@ -32,6 +32,8 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe")
     private List<Review> reviews = new ArrayList<>();
 
+    private String author;
+
     public Recipe() {
     }
 
@@ -41,6 +43,7 @@ public class Recipe {
         this.type = type;
         this.steps = steps;
         this.picture = picture;
+        this.author = "Anonymous";
     }
 
     public Recipe(String title, String type, String steps, String picture) {
@@ -48,12 +51,14 @@ public class Recipe {
         this.type = type;
         this.steps = steps;
         this.picture = picture;
+        this.author = "Anonymous";
     }
 
     public Recipe(String title, String type, String steps) {
         this.title = title;
         this.type = type;
         this.steps = steps;
+        this.author = "Anonymous";
     }
 
     public int getId() {
@@ -84,7 +89,6 @@ public class Recipe {
         return ingredients;
     }
 
-
     public String getSteps() {
         return steps;
     }
@@ -103,5 +107,21 @@ public class Recipe {
 
     public List<Review> getReviews() {
         return reviews;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

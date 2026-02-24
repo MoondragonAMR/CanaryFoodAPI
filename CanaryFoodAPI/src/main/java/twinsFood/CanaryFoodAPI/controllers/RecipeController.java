@@ -4,12 +4,15 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import twinsFood.CanaryFoodAPI.dtos.recipe.Filters;
 import twinsFood.CanaryFoodAPI.dtos.recipe.RecipeRequest;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
+import twinsFood.CanaryFoodAPI.exceptions.NoTuya;
 import twinsFood.CanaryFoodAPI.services.RecipeService;
 
 @RestController
@@ -32,38 +35,49 @@ public class RecipeController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('PREMIUM')")
     @PostMapping("/")
-    public ResponseEntity<?> crear(@Valid @RequestBody RecipeRequest recipe, BindingResult bindingResult) {
+    public ResponseEntity<?> crear(@Valid @RequestBody RecipeRequest recipe, BindingResult bindingResult, Authentication auth) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bindingResult.getFieldErrors());
         }
         try{
-            return ResponseEntity.status(HttpStatus.CREATED).body(rs.addRecipe(recipe));
+            String name = auth.getName();
+            return ResponseEntity.status(HttpStatus.CREATED).body(rs.addRecipe(recipe, name));
         } catch (Existe e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
+
+    @PreAuthorize("hasRole('ADMIN') or hasRole('PREMIUM')")
     @PutMapping("/{id}")
-    public ResponseEntity<?> modificar(@PathVariable int id, @Valid @RequestBody RecipeRequest recipe, BindingResult bindingResult) {
+    public ResponseEntity<?> modificar(@PathVariable int id, @Valid @RequestBody RecipeRequest recipe, BindingResult bindingResult, Authentication auth) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bindingResult.getAllErrors());
         }
         try{
-            return ResponseEntity.ok(rs.updateRecipe(recipe, id));
+            String name = auth.getName();
+            return ResponseEntity.ok(rs.updateRecipe(recipe, id, name));
         } catch (Existe e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         } catch (NoExiste e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (NoTuya nt) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(nt.getMessage());
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('PREMIUM')")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable int id) {
+    public ResponseEntity<?> eliminar(@PathVariable int id, Authentication auth) {
         try{
-            rs.deleteRecipe(id);
+            String name = auth.getName();
+            rs.deleteRecipe(id, name);
             return ResponseEntity.noContent().build();
         } catch (NoExiste e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (NoTuya nt) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(nt.getMessage());
         }
     }
 }

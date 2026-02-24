@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/api/v1/canaryfood/reviews';
+const API_URL = 'http://localhost:3000/api/v1/canaryfood/reviews';
 
 export const reviewRecipe = async (review) =>
   fetch(`${API_URL}/`, {

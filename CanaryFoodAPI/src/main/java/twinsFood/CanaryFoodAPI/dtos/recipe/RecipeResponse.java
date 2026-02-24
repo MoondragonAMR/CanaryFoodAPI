@@ -7,4 +7,5 @@ public record RecipeResponse(int id, String title,
                              List<IngredientInRecipeResponse> ingredients,
                              String steps,
                              String picture,
-                             List<ReviewInRecipeResponse> reviews){}
+                             List<ReviewInRecipeResponse> reviews,
+                             String author){}

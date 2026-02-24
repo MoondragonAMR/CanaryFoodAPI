@@ -5,6 +5,7 @@ import twinsFood.CanaryFoodAPI.dtos.recipe.RecipeRequest;
 import twinsFood.CanaryFoodAPI.dtos.recipe.RecipeResponse;
 import twinsFood.CanaryFoodAPI.exceptions.Existe;
 import twinsFood.CanaryFoodAPI.exceptions.NoExiste;
+import twinsFood.CanaryFoodAPI.exceptions.NoTuya;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ public interface IRecipeService {
 
     public RecipeResponse findRecipe(int id) throws NoExiste;
 
-    public RecipeResponse addRecipe(RecipeRequest recipe) throws Existe;
+    public RecipeResponse addRecipe(RecipeRequest recipe, String user) throws Existe;
 
-    public RecipeResponse updateRecipe(RecipeRequest recipe, int id) throws Existe, NoExiste;
+    public RecipeResponse updateRecipe(RecipeRequest recipe, int id, String user) throws Existe, NoExiste, NoTuya;
 
-    public void deleteRecipe(int id) throws NoExiste;
+    public void deleteRecipe(int id, String user) throws NoExiste, NoTuya;
 
 }
