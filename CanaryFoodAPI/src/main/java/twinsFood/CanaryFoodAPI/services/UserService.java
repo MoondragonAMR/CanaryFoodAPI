@@ -36,13 +36,13 @@ public class UserService implements IUserService {
             }
         });
         User user = new User();
+        user.setDni(userRequest.dni());
+        user.setEmail(userRequest.email());
         if (correcto[0]) {
-            user.setDni(userRequest.dni());
-            user.setEmail(userRequest.email());
             user.setNombreCompleto(userRequest.nombreCompleto());
             user.setTlf(userRequest.tlf());
             user.setPassword(new BCryptPasswordEncoder().encode(userRequest.password()));
-            user.getRoles().add(rr.findByName("ROLE_ALUMNO"));
+            user.getRoles().add(rr.findByName("ROLE_BASIC"));
             ur.save(user);
         }  else {
             if (user.getDni().matches(userRequest.dni()) && user.getEmail().matches(userRequest.email())) {

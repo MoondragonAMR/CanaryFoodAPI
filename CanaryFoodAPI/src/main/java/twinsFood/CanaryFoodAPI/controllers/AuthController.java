@@ -72,8 +72,11 @@ public class AuthController {
 
     @PreAuthorize("hasRole('USER') and !hasRole('PREMIUM')")
     @PostMapping("/premium")
-    public ResponseEntity<?> premium(@ModelAttribute("user") User user){
+    public ResponseEntity<?> premium(Authentication auth){
         try {
+            String name = auth.getName();
+            User user = ur.findByDni(name);
+            user.getRoles().add(rr.findByName("ROLE_PREMIUM"));
             return ResponseEntity.noContent().build();
         } catch (YaPremium e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Este usuario ya es premium");

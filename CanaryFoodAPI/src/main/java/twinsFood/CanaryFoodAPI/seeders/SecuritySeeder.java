@@ -34,17 +34,17 @@ public class SecuritySeeder implements CommandLineRunner {
         }
 
         if (!ur.existsByDni("123456789A")) {
-            ur.save(new User("123456789A", "basic@canaryfood.com", "Basic", "123456789", new BCryptPasswordEncoder().encode("Asdf1234!"), rr.findByName("ROLE_BASIC")));
+            ur.save(new User("123456789A", "basic@canaryfood.com", "Basic CanaryFood", "123456789", new BCryptPasswordEncoder().encode("Asdf1234!"), rr.findByName("ROLE_BASIC")));
         }
 
         if (!ur.existsByDni("234567890B")) {
-            User premium = new User("234567890B", "premium@canaryfood.com", "Premium", "234567890", new BCryptPasswordEncoder().encode("Asdf1234!"), rr.findByName("ROLE_PREMIUM"));
+            User premium = new User("234567890B", "premium@canaryfood.com", "Premium CanaryFood", "234567890", new BCryptPasswordEncoder().encode("Asdf1234!"), rr.findByName("ROLE_PREMIUM"));
             premium.getRoles().add(rr.findByName("ROLE_BASIC"));
             ur.save(premium);
         }
 
-        if (!ur.existsByDni("123456789A")) {
-            ur.save(new User("123456789A", "admin@canaryfood.com", "Admin", "123456789", new BCryptPasswordEncoder().encode("Asdf1234!"), rr.findByName("ROLE_ADMIN")));
+        if (!ur.existsByDni("345678901C")) {
+            ur.save(new User("345678901C", "admin@canaryfood.com", "Admin CanaryFood", "123456789", new BCryptPasswordEncoder().encode("Asdf1234!"), rr.findByName("ROLE_ADMIN")));
         }
     }
 }
